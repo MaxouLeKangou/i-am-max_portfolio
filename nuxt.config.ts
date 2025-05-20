@@ -1,17 +1,18 @@
+import { apiEndpoint, repositoryName } from "./slicemachine.config.json";
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
-	compatibilityDate: '2025-05-15',
-	devtools: { enabled: true },
-	modules: ['@nuxt/image', '@nuxt/fonts'],
+    compatibilityDate: '2025-05-15',
+    devtools: { enabled: true },
+    modules: ['@nuxt/image', '@nuxt/fonts', "@nuxtjs/prismic"],
 
-	// --- Module Image --- //
-	image: {
+    // --- Module Image --- //
+    image: {
 		loading: 'lazy',
 	},
 
-	// --- Module Fonts --- //
-	fonts: {
+    // --- Module Fonts --- //
+    fonts: {
 		families: [
 			{
 				name: 'Inter',
@@ -25,10 +26,15 @@ export default defineNuxtConfig({
 		},
 	},
 
-	// --- TailwindCSS --- //
-	vite: {
+    // --- TailwindCSS --- //
+    vite: {
 		plugins: [tailwindcss()],
 	},
-	// --- CSS File --- //
-	css: ['@/assets/styles/main.css'],
+
+    // --- CSS File --- //
+    css: ['@/assets/styles/main.css'],
+
+    prismic: {
+        endpoint: apiEndpoint || repositoryName
+    }
 });

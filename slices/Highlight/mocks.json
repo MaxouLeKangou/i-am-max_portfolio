@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "storm",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Id ipsum magna officia. Mollit veniam enim mollit anim fugiat proident qui ex commodo. Aliquip tempor culpa velit occaecat laborum sit culpa et culpa voluptate excepteur labore pariatur labore."
+						}
+					}
+				]
+			},
+			"variable": {
+				"__TYPE__": "FieldContent",
+				"value": "regular",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

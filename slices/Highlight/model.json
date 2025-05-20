@@ -1,0 +1,42 @@
+{
+  "id": "highlight",
+  "type": "SharedSlice",
+  "name": "Highlight",
+  "description": "Highlight",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "description",
+            "placeholder": "use {{data}} to add data",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        },
+        "variable": {
+          "type": "Text",
+          "config": {
+            "label": "variable",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

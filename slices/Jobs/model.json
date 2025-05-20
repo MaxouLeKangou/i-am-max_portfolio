@@ -1,0 +1,74 @@
+{
+  "id": "jobs",
+  "type": "SharedSlice",
+  "name": "Jobs",
+  "description": "Jobs",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "jobs": {
+          "type": "Group",
+          "config": {
+            "label": "jobs",
+            "repeat": true,
+            "fields": {
+              "thumbnail": {
+                "type": "Image",
+                "config": {
+                  "label": "thumbnail",
+                  "constraint": {
+                    "width": 40,
+                    "height": 40
+                  },
+                  "thumbnails": []
+                }
+              },
+              "job": {
+                "type": "Text",
+                "config": {
+                  "label": "job",
+                  "placeholder": ""
+                }
+              },
+              "company": {
+                "type": "Text",
+                "config": {
+                  "label": "company",
+                  "placeholder": ""
+                }
+              },
+              "job_start_date": {
+                "type": "Date",
+                "config": {
+                  "label": "job_start_date",
+                  "placeholder": ""
+                }
+              },
+              "job_end_date": {
+                "type": "Date",
+                "config": {
+                  "label": "job_end_date",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

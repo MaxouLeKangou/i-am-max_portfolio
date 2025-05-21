@@ -1,1 +1,46 @@
 @import 'tailwindcss';
+
+@theme {
+	/* DISPLAY FONTS */
+	--font-regular: 'Poppins', sans-serif;
+
+	/* DISPLAY SIZES */
+	--size-xs: 1.125em;
+	--size-base: 1.25em;
+	--size-md: 3.75em;
+	--size-lg: 5em;
+	--size-xl: 8.75em;
+
+	/* DISPLAY COLORS */
+	--color-primary: #4be36f;
+
+	--color-light-100: #d8dfea;
+	--color-light-200: #aaafb8;
+	--color-light-300: #747b80;
+
+	--color-dark-900: #0d0d0d;
+	--color-dark-800: #191919;
+}
+
+:root {
+	/* VARIABLES */
+	/* --spacing-header: 8.375rem; */
+	--spacing-wrap: 90rem;
+}
+
+@layer base {
+	body {
+		font-family: var(--font-regular);
+		font-size: var(--size-base);
+		color: var(--color-light-100);
+		background-color: var(--color-dark-900);
+	}
+
+	.wrapper {
+		@apply max-w-[var(--spacing-wrap)] px-5 mx-auto;
+	}
+
+	h2 {
+		@apply font-semibold uppercase tracking-[0.35em] mb-5;
+	}
+}

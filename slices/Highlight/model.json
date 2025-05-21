@@ -20,12 +20,10 @@
           }
         },
         "description": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
             "label": "description",
-            "placeholder": "use {{data}} to add data",
-            "allowTargetBlank": false,
-            "multi": "paragraph"
+            "placeholder": ""
           }
         },
         "variable": {

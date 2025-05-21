@@ -237,12 +237,12 @@ export interface HighlightSliceDefaultPrimary {
 	/**
 	 * description field in *Highlight → Default → Primary*
 	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: use {{data}} to add data
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
 	 * - **API ID Path**: highlight.default.primary.description
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
-	description: prismic.RichTextField;
+	description: prismic.KeyTextField;
 
 	/**
 	 * variable field in *Highlight → Default → Primary*

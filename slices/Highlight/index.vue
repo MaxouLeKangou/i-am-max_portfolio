@@ -2,11 +2,19 @@
 	<section
 		:data-slice-type="slice.slice_type"
 		:data-slice-variation="slice.variation"
+		class="my-52"
 	>
 		<h2>{{ slice.primary.title }}</h2>
-		<p>{{ parsedDescription }}</p>
+		<p
+			v-html="parsedDescription"
+			class="text-md font-semibold leading-base"
+		></p>
 
-		<HomeWord :variable="String(slice.primary.variable)" v-model="word" />
+		<HomeWord
+			:variable="String(slice.primary.variable)"
+			v-model="word"
+			class="mt-16"
+		/>
 	</section>
 </template>
 
@@ -29,19 +37,10 @@ const match = props.slice.primary.description?.match(/\{\{(.*?)\}\}/);
 const initialWord = match ? match[1].trim() : '';
 const word = ref(initialWord);
 
-// Dynamic description
 const parsedDescription = computed(() => {
-	let description = props.slice.primary.description || '';
-
-	// Replace ||year||
-	description = description.replace(
-		/\|\|year\|\|/g,
-		birthday.value.toString()
-	);
-
-	// Replace {{...}}
-	description = description.replace(/\{\{.*?\}\}/g, word.value);
-
-	return description;
+	return useParseDynamicText(props.slice.primary.description || '', {
+		year: birthday.value,
+		variable: word.value,
+	});
 });
 </script>

@@ -6,8 +6,8 @@
 
 	/* DISPLAY SIZES */
 	--text-xs: 1.125rem;
-	--text-base: 1.25rem;
-	--text-md: 3.75rem;
+	--text-base: clamp(0.875rem, 2.5vw, 1.25rem);
+	--text-md: clamp(1.5rem, 5vw, 3.75rem);
 	--text-lg: 5rem;
 	--text-xl: 8.75rem;
 

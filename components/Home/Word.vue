@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<span>let {{ variable }} = "</span>
+		<span class="text-light-300">let {{ variable }} = "</span>
 		<label :for="variable" class="sr-only">Entrer un mot</label>
 		<input
 			:id="variable"
@@ -12,6 +12,7 @@
 					($event.target as HTMLInputElement)?.value
 				)
 			"
+			class="animate-pulse max-w-full w-32 focus:outline-0 lg:w-52"
 		/>
 		<span>"</span>
 	</div>

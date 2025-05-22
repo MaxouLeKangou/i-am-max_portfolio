@@ -5,11 +5,11 @@
 	--font-regular: 'Poppins', sans-serif;
 
 	/* DISPLAY SIZES */
-	--size-xs: 1.125em;
-	--size-base: 1.25em;
-	--size-md: 3.75em;
-	--size-lg: 5em;
-	--size-xl: 8.75em;
+	--text-xs: 1.125rem;
+	--text-base: clamp(0.875rem, 2.5vw, 1.25rem);
+	--text-md: clamp(1.5rem, 5vw, 3.75rem);
+	--text-lg: 5rem;
+	--text-xl: 8.75rem;
 
 	/* DISPLAY COLORS */
 	--color-primary: #4be36f;
@@ -20,6 +20,8 @@
 
 	--color-dark-900: #0d0d0d;
 	--color-dark-800: #191919;
+
+	--leading-base: 1.2;
 }
 
 :root {
@@ -29,9 +31,13 @@
 }
 
 @layer base {
+	::selection {
+		@apply bg-primary text-dark-900;
+	}
+
 	body {
 		font-family: var(--font-regular);
-		font-size: var(--size-base);
+		font-size: var(--text-base);
 		color: var(--color-light-100);
 		background-color: var(--color-dark-900);
 	}
@@ -42,5 +48,9 @@
 
 	h2 {
 		@apply font-semibold uppercase tracking-[0.35em] mb-5;
+	}
+
+	.dynamic-content {
+		@apply text-primary;
 	}
 }

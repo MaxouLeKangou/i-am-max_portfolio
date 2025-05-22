@@ -10,7 +10,7 @@ export default defineNuxtConfig({
 
 	// --- Config SSL + Domaine --- //
 	devServer: {
-		host: 'local.bessarion.dev',
+		host: '0.0.0.0',
 		port: 3000,
 		https: {
 			key: fs.readFileSync('key/local.bessarion.dev-key.pem', 'utf8'),
@@ -27,9 +27,9 @@ export default defineNuxtConfig({
 	fonts: {
 		families: [
 			{
-				name: 'Inter',
+				name: 'Poppins',
 				provider: 'google',
-				weights: [300, 400, 500, 600, 700],
+				weights: [200, 300, 400, 500, 600, 700],
 			},
 		],
 

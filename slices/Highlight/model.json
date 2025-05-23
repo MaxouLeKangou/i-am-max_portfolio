@@ -35,6 +35,38 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "hero",
+      "name": "Hero",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "description",
+            "placeholder": ""
+          }
+        },
+        "variable": {
+          "type": "Text",
+          "config": {
+            "label": "variable",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

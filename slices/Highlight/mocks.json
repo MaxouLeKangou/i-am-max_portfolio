@@ -20,5 +20,32 @@
 			}
 		},
 		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "hero",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "accident",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "FieldContent",
+				"value": "that",
+				"type": "Text"
+			},
+			"variable": {
+				"__TYPE__": "FieldContent",
+				"value": "crop",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]

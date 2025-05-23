@@ -2,9 +2,9 @@
 	<section
 		:data-slice-type="slice.slice_type"
 		:data-slice-variation="slice.variation"
-		class="my-52"
+		class="spacing-block"
 	>
-		<h2 class="text-center">{{ slice.primary.title }}</h2>
+		<h2 class="home-title text-center">{{ slice.primary.title }}</h2>
 
 		<ul
 			class="grid sm:grid-cols-[repeat(auto-fit,_minmax(21.875rem,_1fr))] gap-5 max-w-[var(--spacing-minwrap)] mx-auto"

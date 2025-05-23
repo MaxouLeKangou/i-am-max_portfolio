@@ -8,8 +8,7 @@
 	--text-xs: clamp(0.75rem, 2.5vw, 1.125rem);
 	--text-base: clamp(0.875rem, 2.5vw, 1.25rem);
 	--text-md: clamp(1.5rem, 5vw, 3.75rem);
-	--text-lg: 5rem;
-	--text-xl: 8.75rem;
+	--text-lg: clamp(4.375rem, 15vw, 8.75rem);
 
 	/* DISPLAY COLORS */
 	--color-primary: #4be36f;
@@ -21,6 +20,7 @@
 	--color-dark-900: #0d0d0d;
 	--color-dark-800: #191919;
 
+	--leading-min: 0.85;
 	--leading-base: 1.2;
 
 	--tracking-min: 0.2em;
@@ -51,11 +51,17 @@
 		@apply max-w-[var(--spacing-wrap)] px-5 mx-auto;
 	}
 
-	h2 {
+	.dynamic-content {
+		@apply text-primary;
+	}
+}
+
+@layer components {
+	.home-title {
 		@apply font-semibold uppercase tracking-base mb-5;
 	}
 
-	.dynamic-content {
-		@apply text-primary;
+	.spacing-block {
+		@apply my-24 md:my-52;
 	}
 }

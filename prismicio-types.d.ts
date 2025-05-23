@@ -269,9 +269,57 @@ export type HighlightSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Highlight → Hero → Primary*
+ */
+export interface HighlightSliceHeroPrimary {
+	/**
+	 * title field in *Highlight → Hero → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: highlight.hero.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * description field in *Highlight → Hero → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: highlight.hero.primary.description
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
+
+	/**
+	 * variable field in *Highlight → Hero → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: highlight.hero.primary.variable
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	variable: prismic.KeyTextField;
+}
+
+/**
+ * Hero variation for Highlight Slice
+ *
+ * - **API ID**: `hero`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HighlightSliceHero = prismic.SharedSliceVariation<
+	'hero',
+	Simplify<HighlightSliceHeroPrimary>,
+	never
+>;
+
+/**
  * Slice variation for *Highlight*
  */
-type HighlightSliceVariation = HighlightSliceDefault;
+type HighlightSliceVariation = HighlightSliceDefault | HighlightSliceHero;
 
 /**
  * Highlight Shared Slice
@@ -427,8 +475,10 @@ declare module '@prismicio/client' {
 			ExpertisesSliceDefault,
 			HighlightSlice,
 			HighlightSliceDefaultPrimary,
+			HighlightSliceHeroPrimary,
 			HighlightSliceVariation,
 			HighlightSliceDefault,
+			HighlightSliceHero,
 			JobsSlice,
 			JobsSliceDefaultPrimaryJobsItem,
 			JobsSliceDefaultPrimary,

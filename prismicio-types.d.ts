@@ -4,6 +4,38 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Content for Category documents
+ */
+interface CategoryDocumentData {
+	/**
+	 * label field in *Category*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: category.label
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+}
+
+/**
+ * Category document from Prismic
+ *
+ * - **API ID**: `category`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoryDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithUID<
+		Simplify<CategoryDocumentData>,
+		'category',
+		Lang
+	>;
+
 type HomeDocumentDataSlicesSlice = JobsSlice | HighlightSlice | ExpertisesSlice;
 
 /**
@@ -68,6 +100,21 @@ export type HomeDocument<Lang extends string = string> =
 type WorkDocumentDataSlicesSlice = never;
 
 /**
+ * Item in *work → categories*
+ */
+export interface WorkDocumentDataCategoriesItem {
+	/**
+	 * category field in *work → categories*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.categories[].category
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	category: prismic.ContentRelationshipField<'category'>;
+}
+
+/**
  * Content for work documents
  */
 interface WorkDocumentData {
@@ -112,6 +159,17 @@ interface WorkDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	meta_image: prismic.ImageField<never>;
+
+	/**
+	 * categories field in *work*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.categories[]
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	categories: prismic.GroupField<Simplify<WorkDocumentDataCategoriesItem>>;
 }
 
 /**
@@ -126,7 +184,7 @@ interface WorkDocumentData {
 export type WorkDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithUID<Simplify<WorkDocumentData>, 'work', Lang>;
 
-export type AllDocumentTypes = HomeDocument | WorkDocument;
+export type AllDocumentTypes = CategoryDocument | HomeDocument | WorkDocument;
 
 /**
  * Item in *Expertises → Default → Primary → expertise*
@@ -440,6 +498,93 @@ type JobsSliceVariation = JobsSliceDefault;
  */
 export type JobsSlice = prismic.SharedSlice<'jobs', JobsSliceVariation>;
 
+/**
+ * Item in *Works → Default → Primary → link*
+ */
+export interface WorksSliceDefaultPrimaryLinkItem {
+	/**
+	 * label field in *Works → Default → Primary → link*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: works.default.primary.link[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * href field in *Works → Default → Primary → link*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: works.default.primary.link[].href
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	href: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *Works → Default → Primary*
+ */
+export interface WorksSliceDefaultPrimary {
+	/**
+	 * title field in *Works → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: works.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * works field in *Works → Default → Primary*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: works.default.primary.works
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	works: prismic.NumberField;
+
+	/**
+	 * link field in *Works → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: works.default.primary.link[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	link: prismic.GroupField<Simplify<WorksSliceDefaultPrimaryLinkItem>>;
+}
+
+/**
+ * Default variation for Works Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorksSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<WorksSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Works*
+ */
+type WorksSliceVariation = WorksSliceDefault;
+
+/**
+ * Works Shared Slice
+ *
+ * - **API ID**: `works`
+ * - **Description**: Works
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorksSlice = prismic.SharedSlice<'works', WorksSliceVariation>;
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -461,12 +606,15 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			CategoryDocument,
+			CategoryDocumentData,
 			HomeDocument,
 			HomeDocumentData,
 			HomeDocumentDataSlicesSlice,
 			WorkDocument,
 			WorkDocumentData,
 			WorkDocumentDataSlicesSlice,
+			WorkDocumentDataCategoriesItem,
 			AllDocumentTypes,
 			ExpertisesSlice,
 			ExpertisesSliceDefaultPrimaryExpertiseItem,
@@ -484,6 +632,11 @@ declare module '@prismicio/client' {
 			JobsSliceDefaultPrimary,
 			JobsSliceVariation,
 			JobsSliceDefault,
+			WorksSlice,
+			WorksSliceDefaultPrimaryLinkItem,
+			WorksSliceDefaultPrimary,
+			WorksSliceVariation,
+			WorksSliceDefault,
 		};
 	}
 }

@@ -36,7 +36,11 @@ export type CategoryDocument<Lang extends string = string> =
 		Lang
 	>;
 
-type HomeDocumentDataSlicesSlice = JobsSlice | HighlightSlice | ExpertisesSlice;
+type HomeDocumentDataSlicesSlice =
+	| WorksSlice
+	| JobsSlice
+	| HighlightSlice
+	| ExpertisesSlice;
 
 /**
  * Content for home documents

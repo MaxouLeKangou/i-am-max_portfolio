@@ -45,24 +45,6 @@
 					"thumbnails": []
 				},
 				"type": "Image"
-			},
-			"categories": {
-				"type": "Group",
-				"config": {
-					"label": "categories",
-					"repeat": true,
-					"fields": {
-						"category": {
-							"type": "Link",
-							"config": {
-								"label": "category",
-								"select": "document",
-								"repeat": false,
-								"customtypes": ["category"]
-							}
-						}
-					}
-				}
 			}
 		}
 	}

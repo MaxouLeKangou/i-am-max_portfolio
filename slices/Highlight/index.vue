@@ -22,7 +22,7 @@
 		:data-slice-type="slice.slice_type"
 		:data-slice-variation="slice.variation"
 		v-else-if="slice.variation === 'hero'"
-		class="min-h-screen flex flex-col justify-between py-10"
+		class="min-h-[calc(100vh_-_var(--spacing-mb-header))] md:min-h-[calc(100vh_-_var(--spacing-desk-header))] flex flex-col justify-between py-10"
 	>
 		<div class="flex flex-col items-center justify-center flex-grow">
 			<h1 class="home-title text-center">{{ slice.primary.title }}</h1>

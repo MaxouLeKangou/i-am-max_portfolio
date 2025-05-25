@@ -19,6 +19,12 @@ export default defineNuxtConfig({
 		},
 	},
 
+	runtimeConfig: {
+		public: {
+			website: 'https://portfolio.bessarion.fr',
+		},
+	},
+
 	// --- Module Image --- //
 	image: {
 		loading: 'lazy',

@@ -4,6 +4,74 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Item in *Header → navigation*
+ */
+export interface HeaderDocumentDataNavigationItem {
+	/**
+	 * label field in *Header → navigation*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.navigation[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * link field in *Header → navigation*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.navigation[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Content for Header documents
+ */
+interface HeaderDocumentData {
+	/**
+	 * logo field in *Header*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.logo
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	logo: prismic.ImageField<never>;
+
+	/**
+	 * navigation field in *Header*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.navigation[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	navigation: prismic.GroupField<Simplify<HeaderDocumentDataNavigationItem>>;
+}
+
+/**
+ * Header document from Prismic
+ *
+ * - **API ID**: `header`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HeaderDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithoutUID<
+		Simplify<HeaderDocumentData>,
+		'header',
+		Lang
+	>;
+
 type HomeDocumentDataSlicesSlice =
 	| WorksSlice
 	| JobsSlice
@@ -130,7 +198,7 @@ interface WorkDocumentData {
 export type WorkDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithUID<Simplify<WorkDocumentData>, 'work', Lang>;
 
-export type AllDocumentTypes = HomeDocument | WorkDocument;
+export type AllDocumentTypes = HeaderDocument | HomeDocument | WorkDocument;
 
 /**
  * Item in *Expertises → Default → Primary → expertise*
@@ -552,6 +620,9 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			HeaderDocument,
+			HeaderDocumentData,
+			HeaderDocumentDataNavigationItem,
 			HomeDocument,
 			HomeDocumentData,
 			HomeDocumentDataSlicesSlice,

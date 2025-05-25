@@ -3,12 +3,14 @@
 @theme {
 	/* DISPLAY FONTS */
 	--font-regular: 'Poppins', sans-serif;
+	--font-secondary: 'Anton', sans-serif;
 
 	/* DISPLAY SIZES */
 	--text-xs: clamp(0.75rem, 2.5vw, 1.125rem);
 	--text-base: clamp(0.875rem, 2.5vw, 1.25rem);
 	--text-md: clamp(1.5rem, 5vw, 3.75rem);
-	--text-lg: clamp(4.375rem, 15vw, 8.75rem);
+	--text-lg: clamp(2.5rem, 8vw, 5rem);
+	--text-xl: clamp(4.375rem, 15vw, 8.75rem);
 
 	/* DISPLAY COLORS */
 	--color-primary: #4be36f;

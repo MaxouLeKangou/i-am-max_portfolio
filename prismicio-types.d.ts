@@ -4,7 +4,11 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = JobsSlice | HighlightSlice | ExpertisesSlice;
+type HomeDocumentDataSlicesSlice =
+	| WorksSlice
+	| JobsSlice
+	| HighlightSlice
+	| ExpertisesSlice;
 
 /**
  * Content for home documents
@@ -440,6 +444,93 @@ type JobsSliceVariation = JobsSliceDefault;
  */
 export type JobsSlice = prismic.SharedSlice<'jobs', JobsSliceVariation>;
 
+/**
+ * Item in *Works → Default → Primary → link*
+ */
+export interface WorksSliceDefaultPrimaryLinkItem {
+	/**
+	 * label field in *Works → Default → Primary → link*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: works.default.primary.link[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * href field in *Works → Default → Primary → link*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: works.default.primary.link[].href
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	href: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *Works → Default → Primary*
+ */
+export interface WorksSliceDefaultPrimary {
+	/**
+	 * title field in *Works → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: works.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * works field in *Works → Default → Primary*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: works.default.primary.works
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	works: prismic.NumberField;
+
+	/**
+	 * link field in *Works → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: works.default.primary.link[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	link: prismic.GroupField<Simplify<WorksSliceDefaultPrimaryLinkItem>>;
+}
+
+/**
+ * Default variation for Works Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorksSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<WorksSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Works*
+ */
+type WorksSliceVariation = WorksSliceDefault;
+
+/**
+ * Works Shared Slice
+ *
+ * - **API ID**: `works`
+ * - **Description**: Works
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorksSlice = prismic.SharedSlice<'works', WorksSliceVariation>;
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -484,6 +575,11 @@ declare module '@prismicio/client' {
 			JobsSliceDefaultPrimary,
 			JobsSliceVariation,
 			JobsSliceDefault,
+			WorksSlice,
+			WorksSliceDefaultPrimaryLinkItem,
+			WorksSliceDefaultPrimary,
+			WorksSliceVariation,
+			WorksSliceDefault,
 		};
 	}
 }

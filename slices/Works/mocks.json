@@ -1,0 +1,48 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "wire",
+				"type": "Text"
+			},
+			"works": {
+				"__TYPE__": "FieldContent",
+				"value": "26",
+				"type": "Number"
+			},
+			"link": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"href",
+								{
+									"key": "b80a1910-2f91-474c-bf50-4da82d20dd01",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io"
+									}
+								}
+							],
+							[
+								"label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "sharp",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

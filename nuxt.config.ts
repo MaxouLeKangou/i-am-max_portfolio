@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineNuxtConfig({
 	compatibilityDate: '2025-05-15',
 	devtools: { enabled: true },
+	ssr: true,
 	modules: ['@nuxt/image', '@nuxt/fonts', '@nuxtjs/prismic'],
 
 	// --- Config SSL + Domaine --- //
@@ -30,6 +31,10 @@ export default defineNuxtConfig({
 				name: 'Poppins',
 				provider: 'google',
 				weights: [200, 300, 400, 500, 600, 700],
+			},
+			{
+				name: 'Anton',
+				provider: 'google',
 			},
 		],
 

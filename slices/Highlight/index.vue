@@ -27,7 +27,7 @@
 		<div class="flex flex-col items-center justify-center flex-grow">
 			<h1 class="home-title text-center">{{ slice.primary.title }}</h1>
 			<p
-				class="uppercase text-center text-lg font-bold leading-min mt-4"
+				class="uppercase text-center text-xl font-bold leading-min mt-4"
 				v-html="parsedDescription"
 			></p>
 		</div>

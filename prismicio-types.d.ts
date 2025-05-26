@@ -5,6 +5,96 @@ import type * as prismic from '@prismicio/client';
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Item in *Footer → networks*
+ */
+export interface FooterDocumentDataNetworksItem {
+	/**
+	 * thumbnail field in *Footer → networks*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.networks[].thumbnail
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	thumbnail: prismic.ImageField<never>;
+
+	/**
+	 * link field in *Footer → networks*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.networks[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+	/**
+	 * title field in *Footer*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * mail field in *Footer*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.mail
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	mail: prismic.KeyTextField;
+
+	/**
+	 * networks field in *Footer*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.networks[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	networks: prismic.GroupField<Simplify<FooterDocumentDataNetworksItem>>;
+
+	/**
+	 * copyright field in *Footer*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.copyright
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	copyright: prismic.RichTextField;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithoutUID<
+		Simplify<FooterDocumentData>,
+		'footer',
+		Lang
+	>;
+
+/**
  * Item in *Header → navigation*
  */
 export interface HeaderDocumentDataNavigationItem {
@@ -198,7 +288,11 @@ interface WorkDocumentData {
 export type WorkDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithUID<Simplify<WorkDocumentData>, 'work', Lang>;
 
-export type AllDocumentTypes = HeaderDocument | HomeDocument | WorkDocument;
+export type AllDocumentTypes =
+	| FooterDocument
+	| HeaderDocument
+	| HomeDocument
+	| WorkDocument;
 
 /**
  * Item in *Expertises → Default → Primary → expertise*
@@ -620,6 +714,9 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			FooterDocument,
+			FooterDocumentData,
+			FooterDocumentDataNetworksItem,
 			HeaderDocument,
 			HeaderDocumentData,
 			HeaderDocumentDataNavigationItem,

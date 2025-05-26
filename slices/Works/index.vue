@@ -4,7 +4,7 @@
 		:data-slice-variation="slice.variation"
 		class="min-h-screen spacing-block"
 	>
-		<h2 class="home-title text-center sticky top-20">
+		<h2 class="home-title text-center sticky -z-10 top-20">
 			{{ slice.primary.title }}
 		</h2>
 
@@ -44,7 +44,7 @@
 			</ul>
 		</div>
 
-		<div class="mt-14 md:mt-28">
+		<div class="pt-14 md:pt-28 bg-dark-900">
 			<p class="flex justify-center">
 				<NuxtLink
 					:to="slice.primary.link[0]?.href.url"

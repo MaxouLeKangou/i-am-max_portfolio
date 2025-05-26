@@ -14,7 +14,7 @@
 			"
 			class="animate-pulse max-w-full w-32 focus:outline-0 lg:w-52"
 		/>
-		<span>"</span>
+		<span class="text-light-300">"</span>
 	</div>
 </template>
 

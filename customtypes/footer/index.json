@@ -1,0 +1,65 @@
+{
+	"format": "custom",
+	"id": "footer",
+	"label": "Footer",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"title": {
+				"type": "Text",
+				"config": {
+					"label": "title",
+					"placeholder": ""
+				}
+			},
+			"mail": {
+				"type": "Text",
+				"config": {
+					"label": "mail",
+					"placeholder": ""
+				}
+			},
+			"networks": {
+				"type": "Group",
+				"config": {
+					"label": "networks",
+					"repeat": true,
+					"fields": {
+						"thumbnail": {
+							"type": "Image",
+							"config": {
+								"label": "thumbnail",
+								"constraint": {
+									"width": 28,
+									"height": 28
+								},
+								"thumbnails": []
+							}
+						},
+						"link": {
+							"type": "Link",
+							"config": {
+								"label": "link",
+								"placeholder": "",
+								"select": null,
+								"allowTargetBlank": true,
+								"allowText": false,
+								"repeat": false
+							}
+						}
+					}
+				}
+			},
+			"copyright": {
+				"type": "StructuredText",
+				"config": {
+					"label": "copyright",
+					"placeholder": "",
+					"allowTargetBlank": false,
+					"multi": "paragraph"
+				}
+			}
+		}
+	}
+}

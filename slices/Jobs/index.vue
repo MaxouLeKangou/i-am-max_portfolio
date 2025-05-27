@@ -24,7 +24,7 @@
 				<div class="flex flex-col gap-0.5">
 					<p>
 						<span>{{ job.job }}</span>
-						<span> à </span>
+						<span> chez </span>
 						<span class="uppercase font-bold">{{
 							job.company
 						}}</span>

@@ -101,9 +101,9 @@
 					</p>
 					<div class="flex flex-col text-white-300 font-light">
 						<p>Génération du site réussi le</p>
-						<p class="flex gap-2">
+						<p class="">
 							<span>{{ date.date }}</span>
-							<span>à</span>
+							<span> à </span>
 							<span>{{ date.time }}</span>
 						</p>
 					</div>

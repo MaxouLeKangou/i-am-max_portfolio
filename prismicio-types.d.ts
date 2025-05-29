@@ -227,7 +227,7 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, 'home', Lang>;
 
-type WorkDocumentDataSlicesSlice = TextImageSlice;
+type WorkDocumentDataSlicesSlice = AboutSlice | TextImageSlice;
 
 /**
  * Content for work documents
@@ -304,6 +304,58 @@ export type AllDocumentTypes =
 	| HeaderDocument
 	| HomeDocument
 	| WorkDocument;
+
+/**
+ * Primary content in *About → Default → Primary*
+ */
+export interface AboutSliceDefaultPrimary {
+	/**
+	 * title field in *About → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: about.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * paragraph field in *About → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: about.default.primary.paragraph
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	paragraph: prismic.RichTextField;
+}
+
+/**
+ * Default variation for About Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<AboutSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *About*
+ */
+type AboutSliceVariation = AboutSliceDefault;
+
+/**
+ * About Shared Slice
+ *
+ * - **API ID**: `about`
+ * - **Description**: About
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSlice = prismic.SharedSlice<'about', AboutSliceVariation>;
 
 /**
  * Item in *Expertises → Default → Primary → expertise*
@@ -793,6 +845,10 @@ declare module '@prismicio/client' {
 			WorkDocumentData,
 			WorkDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			AboutSlice,
+			AboutSliceDefaultPrimary,
+			AboutSliceVariation,
+			AboutSliceDefault,
 			ExpertisesSlice,
 			ExpertisesSliceDefaultPrimaryExpertiseItem,
 			ExpertisesSliceDefaultPrimary,

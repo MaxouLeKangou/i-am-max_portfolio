@@ -28,6 +28,13 @@
 				},
 				"type": "Text"
 			},
+			"meta_subtitle": {
+				"type": "Text",
+				"config": {
+					"label": "Meta Subtitle",
+					"placeholder": ""
+				}
+			},
 			"meta_description": {
 				"config": {
 					"label": "Meta Description",

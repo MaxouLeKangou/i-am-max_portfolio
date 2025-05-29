@@ -1,8 +1,49 @@
+<template>
+	<section
+		:data-slice-type="slice.slice_type"
+		:data-slice-variation="slice.variation"
+		class="text-end spacing-block"
+	>
+		<h2
+			class="text-sm font-semibold uppercase tracking-base md:tracking-min mb-5"
+		>
+			{{ slice.primary.title }}
+		</h2>
+
+		<ul class="flex flex-col gap-5 md:gap-10">
+			<li v-if="slice.primary.clients.length">
+				<p class="uppercase font-semibold mb-1.5">Client(s)</p>
+				<ul>
+					<li v-for="client of slice.primary.clients">
+						<p class="font-light">{{ client.name }}</p>
+					</li>
+				</ul>
+			</li>
+
+			<li v-if="slice.primary.contributors.length">
+				<p class="uppercase font-semibold mb-1.5">Contributeur(s)</p>
+				<ul>
+					<li v-for="contributor of slice.primary.contributors">
+						<p class="font-light">{{ contributor.name }}</p>
+					</li>
+				</ul>
+			</li>
+
+			<li v-if="slice.primary.tools.length">
+				<p class="uppercase font-semibold mb-1.5">Outil(s)</p>
+				<ul>
+					<li v-for="tool of slice.primary.tools">
+						<p class="font-light">{{ tool.name }}</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+</template>
+
 <script setup lang="ts">
 import type { Content } from '@prismicio/client';
 
-// The array passed to `getSliceComponentProps` is purely optional.
-// Consider it as a visual hint for you when templating your slice.
 defineProps(
 	getSliceComponentProps<Content.CreditSlice>([
 		'slice',
@@ -12,41 +53,3 @@ defineProps(
 	])
 );
 </script>
-
-<template>
-	<section
-		:data-slice-type="slice.slice_type"
-		:data-slice-variation="slice.variation"
-	>
-		Placeholder component for credit (variation: {{ slice.variation }})
-		slices.
-
-		<br />
-		<strong>You can edit this slice directly in your code editor.</strong>
-		<!--
-	💡 Use Prismic MCP with your code editor
-
-	Get AI-powered help to build your slice components — based on your actual model.
-
-	▶️ Setup:
-	1. Add a new MCP Server in your code editor:
-
-	{
-		"mcpServers": {
-			"Prismic MCP": {
-				"command": "npx",
-				"args": ["-y", "@prismicio/mcp-server"]
-			}
-		}
-	}
-
-	2. Select Claude 3.7 Sonnet (recommended for optimal output)
-
-	✅ Then open your slice file and ask your code editor:
-		"Code this slice"
-
-	Your code editor reads your slice model and helps you code faster ⚡
-	📚 Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
--->
-	</section>
-</template>

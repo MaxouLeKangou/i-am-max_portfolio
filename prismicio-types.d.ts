@@ -227,7 +227,7 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, 'home', Lang>;
 
-type WorkDocumentDataSlicesSlice = AboutSlice | TextImageSlice;
+type WorkDocumentDataSlicesSlice = ImageSlice | AboutSlice | TextImageSlice;
 
 /**
  * Content for work documents
@@ -563,6 +563,48 @@ export type HighlightSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Image → Default → Primary*
+ */
+export interface ImageSliceDefaultPrimary {
+	/**
+	 * picture field in *Image → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image.default.primary.picture
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	picture: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Image Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ImageSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Image*
+ */
+type ImageSliceVariation = ImageSliceDefault;
+
+/**
+ * Image Shared Slice
+ *
+ * - **API ID**: `image`
+ * - **Description**: Image
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSlice = prismic.SharedSlice<'image', ImageSliceVariation>;
+
+/**
  * Item in *Jobs → Default → Primary → jobs*
  */
 export interface JobsSliceDefaultPrimaryJobsItem {
@@ -860,6 +902,10 @@ declare module '@prismicio/client' {
 			HighlightSliceVariation,
 			HighlightSliceDefault,
 			HighlightSliceHero,
+			ImageSlice,
+			ImageSliceDefaultPrimary,
+			ImageSliceVariation,
+			ImageSliceDefault,
 			JobsSlice,
 			JobsSliceDefaultPrimaryJobsItem,
 			JobsSliceDefaultPrimary,

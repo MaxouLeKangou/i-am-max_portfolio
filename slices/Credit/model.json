@@ -1,0 +1,74 @@
+{
+  "id": "credit",
+  "type": "SharedSlice",
+  "name": "Credit",
+  "description": "Credit",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "clients": {
+          "type": "Group",
+          "config": {
+            "label": "clients",
+            "repeat": true,
+            "fields": {
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "name",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "contributors": {
+          "type": "Group",
+          "config": {
+            "label": "contributors",
+            "repeat": true,
+            "fields": {
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "name",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "tools": {
+          "type": "Group",
+          "config": {
+            "label": "tools",
+            "repeat": true,
+            "fields": {
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "name",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

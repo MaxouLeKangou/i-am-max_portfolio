@@ -4,7 +4,9 @@
 		:data-slice-variation="slice.variation"
 		class="spacing-block max-w-[31.25rem] mx-auto md:max-w-[46.875rem]"
 	>
-		<h2 class="text-sm uppercase tracking-base md:tracking-min mb-5">
+		<h2
+			class="text-sm font-semibold uppercase tracking-base md:tracking-min mb-5"
+		>
 			{{ slice.primary.title }}
 		</h2>
 		<div class="flex flex-col gap-5">

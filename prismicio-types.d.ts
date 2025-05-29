@@ -193,6 +193,17 @@ interface HomeDocumentData {
 	meta_title: prismic.KeyTextField;
 
 	/**
+	 * Meta Subtitle field in *home*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: home.meta_subtitle
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_subtitle: prismic.KeyTextField;
+
+	/**
 	 * Meta Description field in *home*
 	 *
 	 * - **Field Type**: Text

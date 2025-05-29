@@ -1,6 +1,4 @@
 <template>
-	<!-- <pre>{{ data }}</pre> -->
-
 	<section
 		class="flex flex-col justify-between min-h-[calc(100vh_-_var(--spacing-mb-header))] md:min-h-[calc(100vh_-_var(--spacing-desk-header))]"
 	>

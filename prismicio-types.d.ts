@@ -227,7 +227,7 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, 'home', Lang>;
 
-type WorkDocumentDataSlicesSlice = never;
+type WorkDocumentDataSlicesSlice = TextImageSlice;
 
 /**
  * Content for work documents
@@ -618,6 +618,61 @@ type JobsSliceVariation = JobsSliceDefault;
 export type JobsSlice = prismic.SharedSlice<'jobs', JobsSliceVariation>;
 
 /**
+ * Primary content in *TextImage → Default → Primary*
+ */
+export interface TextImageSliceDefaultPrimary {
+	/**
+	 * paragraph field in *TextImage → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_image.default.primary.paragraph
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	paragraph: prismic.KeyTextField;
+
+	/**
+	 * picture field in *TextImage → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_image.default.primary.picture
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	picture: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for TextImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<TextImageSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *TextImage*
+ */
+type TextImageSliceVariation = TextImageSliceDefault;
+
+/**
+ * TextImage Shared Slice
+ *
+ * - **API ID**: `text_image`
+ * - **Description**: TextImage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageSlice = prismic.SharedSlice<
+	'text_image',
+	TextImageSliceVariation
+>;
+
+/**
  * Item in *Works → Default → Primary → link*
  */
 export interface WorksSliceDefaultPrimaryLinkItem {
@@ -754,6 +809,10 @@ declare module '@prismicio/client' {
 			JobsSliceDefaultPrimary,
 			JobsSliceVariation,
 			JobsSliceDefault,
+			TextImageSlice,
+			TextImageSliceDefaultPrimary,
+			TextImageSliceVariation,
+			TextImageSliceDefault,
 			WorksSlice,
 			WorksSliceDefaultPrimaryLinkItem,
 			WorksSliceDefaultPrimary,

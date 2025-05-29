@@ -7,5 +7,6 @@ export const components = defineSliceZoneComponents({
 	expertises: defineAsyncComponent(() => import('./Expertises/index.vue')),
 	highlight: defineAsyncComponent(() => import('./Highlight/index.vue')),
 	jobs: defineAsyncComponent(() => import('./Jobs/index.vue')),
+	text_image: defineAsyncComponent(() => import('./TextImage/index.vue')),
 	works: defineAsyncComponent(() => import('./Works/index.vue')),
 });

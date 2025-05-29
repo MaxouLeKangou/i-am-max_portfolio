@@ -33,7 +33,7 @@
 				<p class="uppercase font-semibold mb-1.5">Outil(s)</p>
 				<ul>
 					<li v-for="tool of slice.primary.tools">
-						<p class="font-light">{{ tool.name }}</p>
+						<p class="font-light uppercase">{{ tool.name }}</p>
 					</li>
 				</ul>
 			</li>

@@ -11,6 +11,12 @@ const { data: page } = useAsyncData('home', () =>
 );
 
 useHead({
-	title: prismic.asText(page.value?.data.title),
+	title: page.value?.data.meta_title ?? '',
+	meta: [
+		{
+			name: 'description',
+			content: page.value?.data.meta_description ?? '',
+		},
+	],
 });
 </script>

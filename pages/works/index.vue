@@ -35,4 +35,8 @@ const { data: works } = await useAsyncData('works', () =>
 		pageSize: 20,
 	})
 );
+
+useHead({
+	title: 'I am Max - Projets',
+});
 </script>

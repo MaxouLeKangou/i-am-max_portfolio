@@ -14,4 +14,14 @@ const route = useRoute();
 const { data: work } = await useAsyncData('work', () =>
 	prismic.client.getByUID('work', route.params.slug)
 );
+
+useHead({
+	title: work.value?.data.meta_title ?? '',
+	meta: [
+		{
+			name: 'description',
+			content: page.value?.data.meta_description ?? '',
+		},
+	],
+});
 </script>

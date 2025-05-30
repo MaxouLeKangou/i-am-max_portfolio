@@ -1,4 +1,4 @@
-import { apiEndpoint, repositoryName } from './slicemachine.config.json';
+import { repositoryName } from './slicemachine.config.json';
 
 import fs from 'fs';
 import tailwindcss from '@tailwindcss/vite';
@@ -7,7 +7,12 @@ export default defineNuxtConfig({
 	compatibilityDate: '2025-05-15',
 	devtools: { enabled: true },
 	ssr: true,
-	modules: ['@nuxt/image', '@nuxt/fonts', '@nuxtjs/prismic'],
+	modules: ['@nuxt/image', '@nuxt/fonts', '@nuxtjs/prismic', '@nuxtjs/seo'],
+
+	// --- Prismic --- //
+	prismic: {
+		endpoint: repositoryName,
+	},
 
 	// --- Config SSL + Domaine --- //
 	devServer: {
@@ -23,6 +28,14 @@ export default defineNuxtConfig({
 		public: {
 			website: 'https://portfolio.bessarion.fr',
 		},
+	},
+
+	site: {
+		url: 'https://portfolio.bessarion.fr',
+		name: 'I am Max - Développeur Web',
+	},
+	robots: {
+		disallow: ['/preview', '/slice-simulator'],
 	},
 
 	// --- Module Image --- //
@@ -56,8 +69,4 @@ export default defineNuxtConfig({
 
 	// --- CSS File --- //
 	css: ['@/assets/styles/main.css'],
-
-	prismic: {
-		endpoint: apiEndpoint || repositoryName,
-	},
 });

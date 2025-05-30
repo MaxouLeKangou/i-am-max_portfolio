@@ -35,4 +35,14 @@ const { data: works } = await useAsyncData('works', () =>
 		pageSize: 20,
 	})
 );
+
+useHead({
+	title: 'Projets',
+});
+
+defineOgImageComponent('Post', {
+	title: 'Projets',
+	description:
+		'Découvrez ici tous les projets réalisés avec des technologies telles que NuxtJS, Strapi, Prismic ou encore Sanity',
+});
 </script>

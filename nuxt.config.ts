@@ -14,6 +14,20 @@ export default defineNuxtConfig({
 		endpoint: repositoryName,
 	},
 
+	app: {
+		head: {
+			htmlAttrs: {
+				lang: 'fr',
+			},
+			meta: [
+				{
+					name: 'google-site-verification',
+					content: 'RZ52c6zgVnWQtMRcxr5gWXfv-VC6C75Tyvchjcz40AY',
+				},
+			],
+		},
+	},
+
 	// --- Config SSL + Domaine --- //
 	devServer: {
 		host: '0.0.0.0',

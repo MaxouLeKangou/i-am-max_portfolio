@@ -15,6 +15,7 @@
 					class="sticky top-32 w-full aspect-[335/490] max-h-[75vh] md:aspect-video"
 				>
 					<NuxtLink
+						:aria-label="`Vers le projet ${work.data.meta_title}`"
 						:to="`work/${work.uid}`"
 						class="relative flex flex-col justify-end w-full h-full p-5 sm:p-10 md:p-20 md:flex-row md:justify-between md:items-end"
 					>
@@ -47,6 +48,7 @@
 		<div class="pt-14 md:pt-28 bg-dark-900">
 			<p class="flex justify-center">
 				<NuxtLink
+					aria-label="Vers tous les projets"
 					:to="slice.primary.link[0]?.href.url"
 					class="link-container w-fit bg-dark-800 rounded-full flex gap-3 items-center py-3.5 px-5 lg:py-4 lg:px-8"
 				>

@@ -6,7 +6,10 @@
 
 		<div class="flex flex-col gap-10 items-center md:gap-14">
 			<p class="animation font-secondary text-md uppercase text-primary">
-				<NuxtLink :to="`mailto:${footer?.data.mail}`">
+				<NuxtLink
+					aria-label="Redirection vers boite mail"
+					:to="`mailto:${footer?.data.mail}`"
+				>
 					{{ footer?.data.mail }}
 				</NuxtLink>
 			</p>
@@ -14,6 +17,7 @@
 				<li v-for="(network, index) of footer?.data.networks">
 					<p>
 						<NuxtLink
+							aria-label="Redirection vers un réseau social"
 							:to="String(network.link.url)"
 							:target="network.link.target"
 							class="w-12 h-12 flex justify-center items-center bg-dark-800 rounded-md md:w-16 md:h-16 transition-all hover:scale-105"

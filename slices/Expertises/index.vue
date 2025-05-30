@@ -12,6 +12,7 @@
 			<li v-for="(expertise, index) of slice.primary.expertise">
 				<p>
 					<NuxtLink
+						:aria-label="`Vers la page de ${expertise.name}`"
 						:to="String(expertise.link.url)"
 						:target="expertise.link.target"
 						class="flex flex-col items-center gap-4 py-6 bg-dark-800 rounded-xl transition-all hover:scale-105"

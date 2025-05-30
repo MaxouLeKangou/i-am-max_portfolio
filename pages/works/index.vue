@@ -9,6 +9,7 @@
 		>
 			<li v-for="work of works" class="aspect-[335/490] md:aspect-video">
 				<NuxtLink
+					:aria-label="`Vers le project ${work.data.meta_title}`"
 					:to="`work/${work.uid}`"
 					class="relative flex flex-col justify-end w-full h-full p-5 md:p-10 md:flex-row md:justify-between md:items-end"
 				>

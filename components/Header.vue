@@ -3,12 +3,14 @@
 		class="wrapper w-full pt-5 flex items-center justify-between md:pt-10"
 	>
 		<component
+			aria-label="Redirection à l'accueil"
 			:is="route.path === '/' ? 'span' : NuxtLink"
 			:to="route.path === '/' ? undefined : '/'"
 		>
 			<NuxtImg
 				:src="header?.data.logo.url"
 				class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover"
+				alt=""
 			/>
 		</component>
 
@@ -35,6 +37,7 @@
 				>
 					<p>
 						<NuxtLink
+							aria-label="Redirection vers Ecoindex"
 							:to="`https://bff.ecoindex.fr/redirect/?url=${website}`"
 							target="_blank"
 						>
@@ -64,6 +67,7 @@
 							<li v-for="item of header?.data.navigation">
 								<p>
 									<component
+										:aria-label="`Vers ${item.label}`"
 										:is="
 											route.path === item.link?.url ||
 											item.link?.url === undefined

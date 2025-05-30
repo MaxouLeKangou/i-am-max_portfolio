@@ -29,14 +29,14 @@ export default defineNuxtConfig({
 	},
 
 	// --- Config SSL + Domaine --- //
-	devServer: {
-		host: '0.0.0.0',
-		port: 3000,
-		https: {
-			key: fs.readFileSync('key/local.bessarion.dev-key.pem', 'utf8'),
-			cert: fs.readFileSync('key/local.bessarion.dev.pem', 'utf8'),
-		},
-	},
+	// devServer: {
+	// 	host: '0.0.0.0',
+	// 	port: 3000,
+	// 	https: {
+	// 		key: fs.readFileSync('key/local.bessarion.dev-key.pem', 'utf8'),
+	// 		cert: fs.readFileSync('key/local.bessarion.dev.pem', 'utf8'),
+	// 	},
+	// },
 
 	runtimeConfig: {
 		public: {

@@ -19,6 +19,7 @@
 					<NuxtImg
 						:src="String(job.thumbnail.url)"
 						class="w-7 h-7 md:w-10 md:h-10"
+						alt=""
 					/>
 				</div>
 				<div class="flex flex-col gap-0.5">

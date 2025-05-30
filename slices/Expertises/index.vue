@@ -26,6 +26,7 @@
 						<NuxtImg
 							:src="String(expertise.thumbnail.url)"
 							class="w-14 h-14"
+							alt=""
 						/>
 						<span class="uppercase text-xs tracking-min">{{
 							expertise.name

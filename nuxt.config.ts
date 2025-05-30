@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 	prismic: {
 		endpoint: repositoryName,
 		preview: false,
+		toolbar: false,
 	},
 
 	app: {

@@ -1,3 +1,17 @@
 <template>
-	<p class="text-center my-40">Cette page n'a pas encore été construite !</p>
+	<ProjectHero :data="work" />
+
+	<SliceZone :components="components" :slices="work?.data.slices ?? []" />
 </template>
+
+<script setup>
+import { components } from '~/slices';
+
+const prismic = usePrismic();
+
+const route = useRoute();
+
+const { data: work } = await useAsyncData('work', () =>
+	prismic.client.getByUID('work', route.params.slug)
+);
+</script>

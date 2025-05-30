@@ -1,0 +1,34 @@
+{
+  "id": "text_image",
+  "type": "SharedSlice",
+  "name": "TextImage",
+  "description": "TextImage",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "paragraph": {
+          "type": "Text",
+          "config": {
+            "label": "paragraph",
+            "placeholder": ""
+          }
+        },
+        "picture": {
+          "type": "Image",
+          "config": {
+            "label": "picture",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

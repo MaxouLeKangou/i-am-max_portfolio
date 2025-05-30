@@ -227,7 +227,11 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, 'home', Lang>;
 
-type WorkDocumentDataSlicesSlice = never;
+type WorkDocumentDataSlicesSlice =
+	| CreditSlice
+	| ImageSlice
+	| AboutSlice
+	| TextImageSlice;
 
 /**
  * Content for work documents
@@ -252,6 +256,17 @@ interface WorkDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */;
 	meta_title: prismic.KeyTextField;
+
+	/**
+	 * Meta Subtitle field in *work*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.meta_subtitle
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_subtitle: prismic.KeyTextField;
 
 	/**
 	 * Meta Description field in *work*
@@ -293,6 +308,177 @@ export type AllDocumentTypes =
 	| HeaderDocument
 	| HomeDocument
 	| WorkDocument;
+
+/**
+ * Primary content in *About → Default → Primary*
+ */
+export interface AboutSliceDefaultPrimary {
+	/**
+	 * title field in *About → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: about.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * paragraph field in *About → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: about.default.primary.paragraph
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	paragraph: prismic.RichTextField;
+}
+
+/**
+ * Default variation for About Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<AboutSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *About*
+ */
+type AboutSliceVariation = AboutSliceDefault;
+
+/**
+ * About Shared Slice
+ *
+ * - **API ID**: `about`
+ * - **Description**: About
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSlice = prismic.SharedSlice<'about', AboutSliceVariation>;
+
+/**
+ * Item in *Credit → Default → Primary → clients*
+ */
+export interface CreditSliceDefaultPrimaryClientsItem {
+	/**
+	 * name field in *Credit → Default → Primary → clients*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: credit.default.primary.clients[].name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	name: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Credit → Default → Primary → contributors*
+ */
+export interface CreditSliceDefaultPrimaryContributorsItem {
+	/**
+	 * name field in *Credit → Default → Primary → contributors*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: credit.default.primary.contributors[].name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	name: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Credit → Default → Primary → tools*
+ */
+export interface CreditSliceDefaultPrimaryToolsItem {
+	/**
+	 * name field in *Credit → Default → Primary → tools*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: credit.default.primary.tools[].name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	name: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Credit → Default → Primary*
+ */
+export interface CreditSliceDefaultPrimary {
+	/**
+	 * title field in *Credit → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: credit.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * clients field in *Credit → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: credit.default.primary.clients[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	clients: prismic.GroupField<Simplify<CreditSliceDefaultPrimaryClientsItem>>;
+
+	/**
+	 * contributors field in *Credit → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: credit.default.primary.contributors[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	contributors: prismic.GroupField<
+		Simplify<CreditSliceDefaultPrimaryContributorsItem>
+	>;
+
+	/**
+	 * tools field in *Credit → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: credit.default.primary.tools[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	tools: prismic.GroupField<Simplify<CreditSliceDefaultPrimaryToolsItem>>;
+}
+
+/**
+ * Default variation for Credit Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CreditSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<CreditSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Credit*
+ */
+type CreditSliceVariation = CreditSliceDefault;
+
+/**
+ * Credit Shared Slice
+ *
+ * - **API ID**: `credit`
+ * - **Description**: Credit
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CreditSlice = prismic.SharedSlice<'credit', CreditSliceVariation>;
 
 /**
  * Item in *Expertises → Default → Primary → expertise*
@@ -500,6 +686,48 @@ export type HighlightSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Image → Default → Primary*
+ */
+export interface ImageSliceDefaultPrimary {
+	/**
+	 * picture field in *Image → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image.default.primary.picture
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	picture: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Image Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ImageSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Image*
+ */
+type ImageSliceVariation = ImageSliceDefault;
+
+/**
+ * Image Shared Slice
+ *
+ * - **API ID**: `image`
+ * - **Description**: Image
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSlice = prismic.SharedSlice<'image', ImageSliceVariation>;
+
+/**
  * Item in *Jobs → Default → Primary → jobs*
  */
 export interface JobsSliceDefaultPrimaryJobsItem {
@@ -605,6 +833,61 @@ type JobsSliceVariation = JobsSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type JobsSlice = prismic.SharedSlice<'jobs', JobsSliceVariation>;
+
+/**
+ * Primary content in *TextImage → Default → Primary*
+ */
+export interface TextImageSliceDefaultPrimary {
+	/**
+	 * paragraph field in *TextImage → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_image.default.primary.paragraph
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	paragraph: prismic.KeyTextField;
+
+	/**
+	 * picture field in *TextImage → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_image.default.primary.picture
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	picture: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for TextImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<TextImageSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *TextImage*
+ */
+type TextImageSliceVariation = TextImageSliceDefault;
+
+/**
+ * TextImage Shared Slice
+ *
+ * - **API ID**: `text_image`
+ * - **Description**: TextImage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageSlice = prismic.SharedSlice<
+	'text_image',
+	TextImageSliceVariation
+>;
 
 /**
  * Item in *Works → Default → Primary → link*
@@ -727,6 +1010,17 @@ declare module '@prismicio/client' {
 			WorkDocumentData,
 			WorkDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			AboutSlice,
+			AboutSliceDefaultPrimary,
+			AboutSliceVariation,
+			AboutSliceDefault,
+			CreditSlice,
+			CreditSliceDefaultPrimaryClientsItem,
+			CreditSliceDefaultPrimaryContributorsItem,
+			CreditSliceDefaultPrimaryToolsItem,
+			CreditSliceDefaultPrimary,
+			CreditSliceVariation,
+			CreditSliceDefault,
 			ExpertisesSlice,
 			ExpertisesSliceDefaultPrimaryExpertiseItem,
 			ExpertisesSliceDefaultPrimary,
@@ -738,11 +1032,19 @@ declare module '@prismicio/client' {
 			HighlightSliceVariation,
 			HighlightSliceDefault,
 			HighlightSliceHero,
+			ImageSlice,
+			ImageSliceDefaultPrimary,
+			ImageSliceVariation,
+			ImageSliceDefault,
 			JobsSlice,
 			JobsSliceDefaultPrimaryJobsItem,
 			JobsSliceDefaultPrimary,
 			JobsSliceVariation,
 			JobsSliceDefault,
+			TextImageSlice,
+			TextImageSliceDefaultPrimary,
+			TextImageSliceVariation,
+			TextImageSliceDefault,
 			WorksSlice,
 			WorksSliceDefaultPrimaryLinkItem,
 			WorksSliceDefaultPrimary,

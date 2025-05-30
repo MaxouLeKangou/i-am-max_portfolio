@@ -6,7 +6,7 @@
 import { components } from '~/slices';
 
 const prismic = usePrismic();
-const { data: page } = useAsyncData('home', () =>
+const { data: page } = await useAsyncData('home', () =>
 	prismic.client.getSingle('home')
 );
 
@@ -18,5 +18,10 @@ useHead({
 			content: page.value?.data.meta_description ?? '',
 		},
 	],
+});
+
+defineOgImageComponent('Post', {
+	title: page.value?.data.meta_title ?? '',
+	description: page.value?.data.meta_description ?? '',
 });
 </script>

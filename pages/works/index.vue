@@ -37,6 +37,12 @@ const { data: works } = await useAsyncData('works', () =>
 );
 
 useHead({
-	title: 'I am Max - Projets',
+	title: 'Projets',
+});
+
+defineOgImageComponent('Post', {
+	title: 'Projets',
+	description:
+		'Découvrez ici tous les projets réalisés avec des technologies telles que NuxtJS, Strapi, Prismic ou encore Sanity',
 });
 </script>

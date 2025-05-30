@@ -20,8 +20,13 @@ useHead({
 	meta: [
 		{
 			name: 'description',
-			content: page.value?.data.meta_description ?? '',
+			content: work.value?.data.meta_description ?? '',
 		},
 	],
+});
+
+defineOgImageComponent('Post', {
+	title: work.value?.data.meta_title ?? '',
+	description: work.value?.data.meta_description ?? '',
 });
 </script>

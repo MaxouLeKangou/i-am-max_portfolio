@@ -1,4 +1,4 @@
-import { apiEndpoint, repositoryName } from './slicemachine.config.json';
+import { repositoryName } from './slicemachine.config.json';
 
 import fs from 'fs';
 import tailwindcss from '@tailwindcss/vite';
@@ -7,11 +7,11 @@ export default defineNuxtConfig({
 	compatibilityDate: '2025-05-15',
 	devtools: { enabled: true },
 	ssr: true,
-	modules: ['@nuxt/image', '@nuxt/fonts', '@nuxtjs/prismic'],
+	modules: ['@nuxt/image', '@nuxt/fonts', '@nuxtjs/prismic', '@nuxtjs/seo'],
 
 	// --- Prismic --- //
 	prismic: {
-		endpoint: apiEndpoint || repositoryName,
+		endpoint: repositoryName,
 	},
 
 	// --- Config SSL + Domaine --- //
@@ -24,11 +24,18 @@ export default defineNuxtConfig({
 		},
 	},
 
-	// --- Runtime Config --- //
 	runtimeConfig: {
 		public: {
 			website: 'https://portfolio.bessarion.fr',
 		},
+	},
+
+	site: {
+		url: 'https://portfolio.bessarion.fr',
+		name: 'I am Max - Développeur Web',
+	},
+	robots: {
+		disallow: ['/preview', '/slice-simulator'],
 	},
 
 	// --- Module Image --- //
@@ -59,27 +66,7 @@ export default defineNuxtConfig({
 	vite: {
 		plugins: [tailwindcss()],
 	},
-	css: ['@/assets/styles/main.css'],
 
-	// --- SEO --- //
-	app: {
-		head: {
-			htmlAttrs: {
-				lang: 'fr',
-			},
-			title: 'I am Max - Front-end Développeur',
-			meta: [
-				{ name: 'robots', content: 'index, follow' },
-				{
-					name: 'description',
-					content:
-						'Développeur frontend spécialisé en sites performants avec Nuxt.js, Tailwind CSS et CMS headless (Strapi, Prismic). Idéal pour e-commerce & entreprises.',
-				},
-				{
-					name: 'viewport',
-					content: 'width=device-width, initial-scale=1',
-				},
-			],
-		},
-	},
+	// --- CSS File --- //
+	css: ['@/assets/styles/main.css'],
 });

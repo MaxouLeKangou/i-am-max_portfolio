@@ -92,9 +92,6 @@
 			</div>
 
 			<div class="flex gap-1.5">
-				<span class="mt-0.5">
-					<LazyIconsCheck class="text-primary" />
-				</span>
 				<div class="flex flex-col gap-1.5 text-base lg:text-desk-sm">
 					<p class="text-primary font-semibold tracking-first">
 						SITEWEB

@@ -9,6 +9,11 @@ export default defineNuxtConfig({
 	ssr: true,
 	modules: ['@nuxt/image', '@nuxt/fonts', '@nuxtjs/prismic'],
 
+	// --- Prismic --- //
+	prismic: {
+		endpoint: apiEndpoint || repositoryName,
+	},
+
 	// --- Config SSL + Domaine --- //
 	devServer: {
 		host: '0.0.0.0',
@@ -19,6 +24,7 @@ export default defineNuxtConfig({
 		},
 	},
 
+	// --- Runtime Config --- //
 	runtimeConfig: {
 		public: {
 			website: 'https://portfolio.bessarion.fr',
@@ -53,11 +59,27 @@ export default defineNuxtConfig({
 	vite: {
 		plugins: [tailwindcss()],
 	},
-
-	// --- CSS File --- //
 	css: ['@/assets/styles/main.css'],
 
-	prismic: {
-		endpoint: apiEndpoint || repositoryName,
+	// --- SEO --- //
+	app: {
+		head: {
+			htmlAttrs: {
+				lang: 'fr',
+			},
+			title: 'I am Max - Front-end Développeur',
+			meta: [
+				{ name: 'robots', content: 'index, follow' },
+				{
+					name: 'description',
+					content:
+						'Développeur frontend spécialisé en sites performants avec Nuxt.js, Tailwind CSS et CMS headless (Strapi, Prismic). Idéal pour e-commerce & entreprises.',
+				},
+				{
+					name: 'viewport',
+					content: 'width=device-width, initial-scale=1',
+				},
+			],
+		},
 	},
 });

@@ -3,12 +3,16 @@
 		class="wrapper w-full pt-5 flex items-center justify-between md:pt-10"
 	>
 		<component
-			aria-label="Redirection à l'accueil"
 			:is="route.path === '/' ? 'span' : NuxtLink"
+			v-bind="
+				route.path === '/'
+					? {}
+					: { 'aria-label': 'Redirection à l\'accueil' }
+			"
 			:to="route.path === '/' ? undefined : '/'"
 		>
 			<NuxtImg
-				:src="header?.data.logo.url"
+				:src="String(header?.data.logo.url)"
 				class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover"
 				alt=""
 			/>

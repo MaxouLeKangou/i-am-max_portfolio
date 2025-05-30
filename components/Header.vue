@@ -67,12 +67,19 @@
 							<li v-for="item of header?.data.navigation">
 								<p>
 									<component
-										:aria-label="`Vers ${item.label}`"
 										:is="
 											route.path === item.link?.url ||
 											item.link?.url === undefined
 												? 'span'
 												: NuxtLink
+										"
+										v-bind="
+											route.path === item.link?.url ||
+											item.link?.url === undefined
+												? {}
+												: {
+														'aria-label': `Vers ${item.label}`,
+													}
 										"
 										:to="item.link?.url"
 										@click="

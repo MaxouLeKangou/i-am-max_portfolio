@@ -1,4 +1,6 @@
 <template>
+	<Header />
+
 	<ProjectHero :data="work" />
 
 	<SliceZone :components="components" :slices="work?.data.slices ?? []" />

@@ -1,4 +1,5 @@
 <template>
+	<Header />
 	<div class="my-20">
 		<h1 class="font-secondary text-lg uppercase text-center my-10">
 			Projets

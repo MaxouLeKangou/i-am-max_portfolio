@@ -1,4 +1,5 @@
 <template>
+	<Header />
 	<SliceZone :components="components" :slices="page?.data.slices ?? []" />
 </template>
 
